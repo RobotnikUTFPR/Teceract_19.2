@@ -14,7 +14,8 @@
 
 #define BTN 8
 
-#define TOTAL 8
+/* Defining the cube states constants. I.E : RAIN = 0 */
+#define TOTAL 8 
 #define RAIN 0
 #define PLANE_BOING 1
 #define SEND_VOXELS 2
@@ -24,6 +25,7 @@
 #define TEXT 6
 #define LIT 7
 
+/*Defining the duration of each cube state . I.E : RAIN_TIME 200 says that the RAIN state lasts 200 miliseconds(0.2 seconds)*/
 #define RAIN_TIME 200
 #define PLANE_BOING_TIME 300
 #define SEND_VOXELS_TIME 140
@@ -33,6 +35,7 @@
 #define TEXT_TIME 300
 #define CLOCK_TIME 500
 
+/* Declaring an 10x8 matrix of hex numbers. uint8_t means only 1 byte per variable, meaning numbers from 0 to 255 or 0x00 to 0xff. */
 uint8_t characters[10][8] = {
   {0x3C, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x3C}, //0
   {0x10, 0x18, 0x14, 0x10, 0x10, 0x10, 0x10, 0x3C}, //1
@@ -46,7 +49,9 @@ uint8_t characters[10][8] = {
   {0x3C, 0x42, 0x42, 0x42, 0x3C, 0x40, 0x40, 0x3C}, //9
 };
 
+/* Declaring an uint8_t(numbers from 0 to 255) 8x8 matrix for our cube. */
 uint8_t cube[8][8];
+/* Declaring an uint8_t(numbers from 0 to 255)  variable for our Current State of the cube */
 uint8_t currentEffect;
 
 uint16_t timer;
@@ -534,4 +539,3 @@ void clearCube() {
     }
   }
 }
-
