@@ -66,12 +66,11 @@ void setup() {
   randomTimer = 0;
   currentEffect = RAIN;
 
+/* essa parte aqui eu nao entendi direito pls send help*/ 
   SPI.begin();
   SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
 
   pinMode(BTN, INPUT_PULLUP);
-
-
 
   randomSeed(analogRead(0));
 
@@ -80,7 +79,8 @@ void setup() {
 void loop() {
 
   randomTimer++;
-
+/* se o botão está no desligado, o cubo é limpo e se current effects  é  total (significa que
+todos os efeitos já foram usado), começa-se de novo a sequência e zera-se as variáveis*/
   if (digitalRead(BTN) == LOW) {
     clearCube();
     loading = true;
@@ -91,10 +91,12 @@ void loop() {
     }
     randomSeed(randomTimer);
     randomTimer = 0;
+    /* delay de 0.5 segundos quando o cubo inicia */
     delay(500);
 
   }
 
+/* switch-case para os efeitos */
   switch (currentEffect) {
     case RAIN: rain(); break;
     case PLANE_BOING: planeBoing(); break;
